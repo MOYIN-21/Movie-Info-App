@@ -76,24 +76,34 @@ const options = {
   }
 
   // document.getElementById("searchButton").addEventListener("click", fetchMovie);
-document.getElementById("searchButton").addEventListener("click", fetchMovie);
+  
+  //   document.getElementById("nowPlayingButton").addEventListener("click", function() {
+  //       fetchNowPlaying();
+  //   });
+  
+  //   document.getElementById("topRatedButton").addEventListener("click", function() {
+  //       fetchTopRated();
+  //   });
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("searchButton").addEventListener("click", fetchMovie);
 
-// ✅ NEW CODE: trigger search when pressing Enter inside the input
-document.getElementById("searchInput").addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault(); // stops the form from reloading the page
-    fetchMovie();
-  }
+  // ✅ Enter key search
+  document.getElementById("searchInput").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault(); // stop page reload
+      fetchMovie();
+    }
+  });
+
+  document.getElementById("nowPlayingButton").addEventListener("click", function () {
+    fetchNowPlaying();
+  });
+
+  document.getElementById("topRatedButton").addEventListener("click", function () {
+    fetchTopRated();
+  });
 });
-  
-  
-    document.getElementById("nowPlayingButton").addEventListener("click", function() {
-        fetchNowPlaying();
-    });
-  
-    document.getElementById("topRatedButton").addEventListener("click", function() {
-        fetchTopRated();
-    });
+
 
     function fetchNowPlaying() {
         let resultsDiv = document.querySelector('.results');
